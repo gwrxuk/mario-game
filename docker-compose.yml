@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  mario-game:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: super-mario-game
+    image: mario-game:latest
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+    networks:
+      - game-network
+    environment:
+      - NGINX_HOST=localhost
+      - NGINX_PORT=80
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    labels:
+      - "com.mario.description=Super Mario platformer game"
+      - "com.mario.version=1.0"
+
+networks:
+  game-network:
+    driver: bridge
+
+# Optional: Uncomment to add volumes for development
+# volumes:
+#   game-data:
+#     driver: local
+
