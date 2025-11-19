@@ -424,3 +424,74 @@ canvas {
     border: 2px solid #fff;
 }
 
+/* Spline 3D Viewer */
+.spline-viewer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.3s ease;
+}
+
+.spline-viewer.hidden {
+    opacity: 0;
+    pointer-events: none;
+    display: none;
+}
+
+#spline-canvas {
+    width: 100%;
+    height: 100%;
+    max-width: 100vw;
+    max-height: 100vh;
+    display: block;
+}
+
+.spline-close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 0, 0, 0.8);
+    border: 3px solid #fff;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 32px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s;
+    z-index: 1001;
+    font-family: Arial, sans-serif;
+    line-height: 1;
+    padding: 0;
+}
+
+.spline-close-btn:hover {
+    background: rgba(255, 0, 0, 1);
+    transform: scale(1.1);
+}
+
+.spline-close-btn:active {
+    transform: scale(0.95);
+}
+
+@media (max-width: 768px) {
+    .spline-close-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 24px;
+        top: 10px;
+        right: 10px;
+    }
+}
+

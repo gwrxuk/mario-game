@@ -26,6 +26,12 @@
         <!-- PixiJS canvas will be inserted here -->
     </div>
 
+    <!-- Spline 3D Viewer (Background/Overlay) -->
+    <div id="spline-container" class="spline-viewer hidden">
+        <canvas id="spline-canvas"></canvas>
+        <button class="spline-close-btn" id="btn-close-spline">×</button>
+    </div>
+
     <!-- Game UI -->
     <div id="game-ui">
         <div id="hud">
@@ -151,12 +157,16 @@
     <!-- PixiJS Library -->
     <script src="https://cdn.jsdelivr.net/npm/pixi.js@7/dist/pixi.min.js"></script>
     
+    <!-- Spline Runtime -->
+    <script type="module" src="https://unpkg.com/@splinetool/runtime@1.0.0/build/runtime.js"></script>
+    
     <!-- Game Scripts -->
     <script src="js/config.js"></script>
     <script src="js/graphics.js"></script>
     <script src="js/entities.js"></script>
     <script src="js/physics.js"></script>
     <script src="js/level.js"></script>
+    <script src="js/spline-manager.js"></script>
     <script src="js/game.js"></script>
     <script src="js/main.js"></script>
 </body>

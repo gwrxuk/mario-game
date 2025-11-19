@@ -86,6 +86,25 @@ const CONFIG = {
         MIN_Y: 0,
         DEADZONE_Y: 150,
         VERTICAL: true  // Camera follows Y axis
+    },
+    
+    // Spline 3D Integration
+    SPLINE: {
+        ENABLED: true,
+        SCENES: {
+            // Add your Spline scene URLs here
+            // Example: 'background': 'https://prod.spline.design/YOUR-SCENE-ID/scene.splinecode'
+            'menu_background': null,      // 3D background for main menu
+            'victory_animation': null,     // 3D animation for level complete
+            'gameover_scene': null,        // 3D scene for game over
+            'powerup_effect': null         // 3D effect for power-ups
+        },
+        DEFAULT_OPTIONS: {
+            autoStart: true,
+            showOnLoad: false,
+            background: 'transparent',
+            position: 'overlay' // 'overlay', 'background', 'fullscreen'
+        }
     }
 };
 

@@ -18,6 +18,7 @@ A complete Super Mario-style platformer game built with PixiJS!
 
 ### Technical Features
 - ✅ Built with PixiJS 7
+- ✅ **Spline 3D Integration** - Add interactive 3D scenes and animations
 - ✅ Smooth 60 FPS gameplay
 - ✅ Procedural sprite generation (no external images needed!)
 - ✅ Physics engine with gravity and collision detection
@@ -26,6 +27,8 @@ A complete Super Mario-style platformer game built with PixiJS!
 - ✅ Responsive design
 - ✅ Keyboard controls for desktop
 - ✅ Game state management
+- ✅ Vertical screen orientation for mobile
+- ✅ Docker support for easy deployment
 
 ## 🕹️ Controls
 
@@ -41,10 +44,23 @@ A complete Super Mario-style platformer game built with PixiJS!
 
 ## 🚀 How to Run
 
-### Option 1: Direct Open
+### Option 1: Docker (Recommended)
+```bash
+# Build and run with docker-compose
+docker-compose up --build
+
+# Or use the deploy script
+./deploy.sh
+```
+
+Then open `http://localhost:8080`
+
+See [DOCKER.md](DOCKER.md) for more details.
+
+### Option 2: Direct Open
 Simply open `index.html` in a modern web browser.
 
-### Option 2: Local Server (Recommended)
+### Option 3: Local Server
 ```bash
 # Python 3
 python3 -m http.server 8000
@@ -58,7 +74,7 @@ npx http-server -p 8000
 
 Then open `http://localhost:8000`
 
-### Option 3: Live Server
+### Option 4: Live Server
 If you're using VS Code, install the "Live Server" extension and click "Go Live".
 
 ## 📖 How to Play
@@ -96,10 +112,51 @@ mario-game/
 │   ├── entities.js         # Player, Enemy, Coin, Block classes
 │   ├── physics.js          # Physics and collision detection
 │   ├── level.js            # Level design and management
+│   ├── spline-manager.js   # Spline 3D integration manager
 │   ├── game.js             # Main game logic
 │   └── main.js             # Entry point and UI handlers
-└── README.md               # This file
+├── Dockerfile              # Docker image configuration
+├── docker-compose.yml      # Docker orchestration
+├── nginx.conf              # Nginx web server config
+├── deploy.sh               # Deployment script
+├── README.md               # This file
+├── DOCKER.md               # Docker deployment guide
+├── SPLINE_INTEGRATION.md   # Spline 3D integration guide
+└── PROJECT_SUMMARY.md      # Comprehensive project overview
 ```
+
+## 🌟 Spline 3D Integration
+
+This game now supports **Spline 3D** integration! Add interactive 3D scenes and animations to your game:
+
+- 3D backgrounds and environments
+- Victory/Game Over animations
+- Interactive 3D effects
+- Menu backgrounds
+
+**Quick Start:**
+
+1. Create a 3D scene at [Spline.design](https://spline.design/)
+2. Export your scene and get the URL
+3. Add it to `js/config.js`:
+
+```javascript
+SPLINE: {
+    SCENES: {
+        'menu_background': 'https://prod.spline.design/YOUR-SCENE-ID/scene.splinecode'
+    }
+}
+```
+
+4. Use in your game:
+
+```javascript
+const splineManager = new SplineManager();
+await splineManager.loadScene(CONFIG.SPLINE.SCENES.menu_background);
+splineManager.show();
+```
+
+**📖 Full documentation:** See [SPLINE_INTEGRATION.md](SPLINE_INTEGRATION.md) for complete guide, API reference, and examples.
 
 ## 🔧 Technical Details
 
