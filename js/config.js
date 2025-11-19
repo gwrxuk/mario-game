@@ -105,6 +105,40 @@ const CONFIG = {
             background: 'transparent',
             position: 'overlay' // 'overlay', 'background', 'fullscreen'
         }
+    },
+    
+    // Spine 2D Animation Integration
+    SPINE: {
+        ENABLED: true,
+        // Add paths to your Spine skeleton files
+        SKELETONS: {
+            // Example:
+            // 'mario': {
+            //     json: 'assets/spine/mario/mario.json',
+            //     atlas: 'assets/spine/mario/mario.atlas'
+            // },
+            // 'goomba': {
+            //     json: 'assets/spine/goomba/goomba.json',
+            //     atlas: 'assets/spine/goomba/goomba.atlas'
+            // }
+        },
+        DEFAULT_OPTIONS: {
+            scale: 0.5,
+            autoPlay: true,
+            loop: true,
+            speed: 1
+        },
+        // Common animation names (customize based on your Spine files)
+        ANIMATIONS: {
+            IDLE: 'idle',
+            WALK: 'walk',
+            RUN: 'run',
+            JUMP: 'jump',
+            FALL: 'fall',
+            ATTACK: 'attack',
+            HURT: 'hurt',
+            DEATH: 'death'
+        }
     }
 };
 

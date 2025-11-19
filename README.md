@@ -19,6 +19,7 @@ A complete Super Mario-style platformer game built with PixiJS!
 ### Technical Features
 - ✅ Built with PixiJS 7
 - ✅ **Spline 3D Integration** - Add interactive 3D scenes and animations
+- ✅ **Spine 2D Animation** - Professional skeletal animations for characters
 - ✅ Smooth 60 FPS gameplay
 - ✅ Procedural sprite generation (no external images needed!)
 - ✅ Physics engine with gravity and collision detection
@@ -112,6 +113,7 @@ mario-game/
 │   ├── entities.js         # Player, Enemy, Coin, Block classes
 │   ├── physics.js          # Physics and collision detection
 │   ├── level.js            # Level design and management
+│   ├── spine-manager.js    # Spine 2D animation manager
 │   ├── spline-manager.js   # Spline 3D integration manager
 │   ├── game.js             # Main game logic
 │   └── main.js             # Entry point and UI handlers
@@ -121,9 +123,53 @@ mario-game/
 ├── deploy.sh               # Deployment script
 ├── README.md               # This file
 ├── DOCKER.md               # Docker deployment guide
+├── SPINE_ANIMATION.md      # Spine 2D animation guide
 ├── SPLINE_INTEGRATION.md   # Spline 3D integration guide
 └── PROJECT_SUMMARY.md      # Comprehensive project overview
 ```
+
+## 🎨 Spine 2D Animation
+
+This game now supports **Spine 2D skeletal animations**! Add professional character animations:
+
+- Smooth skeletal animations for characters
+- Multiple animation tracks
+- Animation blending and transitions
+- Skin swapping for character customization
+- Event-driven animation logic
+
+**Quick Start:**
+
+1. Export your Spine animation (.json, .atlas, .png)
+2. Add to `js/config.js`:
+
+```javascript
+SPINE: {
+    SKELETONS: {
+        'mario': {
+            json: 'assets/spine/mario/mario.json',
+            atlas: 'assets/spine/mario/mario.atlas'
+        }
+    }
+}
+```
+
+3. Use in your game:
+
+```javascript
+const spineManager = new SpineManager(app);
+await spineManager.loadSkeleton('mario', 
+    CONFIG.SPINE.SKELETONS.mario.json,
+    CONFIG.SPINE.SKELETONS.mario.atlas
+);
+
+const marioSpine = spineManager.createAnimation('mario', {
+    x: 100, y: 200, scale: 0.5, animationName: 'walk'
+});
+app.stage.addChild(marioSpine);
+```
+
+**📖 Full documentation:** See [SPINE_ANIMATION.md](SPINE_ANIMATION.md) for complete guide, API reference, and examples.
 
 ## 🌟 Spline 3D Integration
 
